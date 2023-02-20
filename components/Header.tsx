@@ -19,6 +19,9 @@ export default function Header({}: Props) {
             opacity: 1,
             scale: 1,
         }}
+        transition={{
+            delay: 1,
+        }}
         className='flex flex-row items-center'>
         {/* Logo */}
         <SocialIcon
@@ -47,6 +50,9 @@ export default function Header({}: Props) {
         x:0,
         opacity: 1,
         scale: 1,
+      }}
+      transition={{
+        delay: 1,
       }}
 
       className='flex flex-row items-center text-gray-300 cursor-pointer'>
