@@ -4,6 +4,10 @@ type Props = {}
 
 export default function Header({}: Props) {
   return (
-    <div>Header</div>
+    <header>
+        <div>
+            {/* Logo */}
+        </div>
+    </header>
   )
 }
