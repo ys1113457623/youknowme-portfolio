@@ -1,51 +1,63 @@
+import urlFor from '@/sanity';
+import { Experience } from '@/typing';
 import { motion } from 'framer-motion';
 import React from 'react'
+import Image from 'next/image'
 
-type Props = {}
+type Props = {
+	experience: Experience;
+}
 
-export default function ExperienceCard({}: Props) {
+export default function ExperienceCard({experience}: Props) {
     return (
-		<article className="flex flex-col rounded-lg items-center space-y-7 flex-shrink-0 w-[500px] md:w-[600px] xl:w-[900px] snap-center bg-[#292929] p-10 opacity-40 hover:opacity-100 transition-opacity duration-200 overflow-hidden">
-			<motion.img
-				className="w-32 h-32 rounded-full xl:w-[200px] xl:h-[200px] object-cover object-center"
-				initial={{ y: -100, opacity: 0 }}
-				transition={{ duration: 1.2 }}
-				whileInView={{ opacity: 1, y: 0 }}
-				viewport={{ once: true }}
-				src="https://flomaster.club/uploads/posts/2021-02/1612161616_32-p-risunki-na-avatarku-35.jpg"
-				alt="Image"
-			/>
-			<div className="px-0 md:px-10">
-				<h4 className="text-4xl font-light">CEO of PAPAFAM</h4>
-				<p className="font-bold text-2xl mt-1">PAPAFAM</p>
-				<div className="flex space-x-2 my-2">
-					<img
-						className="w-10 h-10 rounded-full"
-						src="https://sun9-45.userapi.com/impg/3FbwaRJ40t7Pf98vyFKviZrHvNM_2gcu1Y8NVg/ZSXk-4Ihtcw.jpg?size=604x604&quality=96&sign=f829ec70056ddecda976ddb1d86433da&type=album"
-						alt="Icon"
-					/>
-					<img
-						className="w-10 h-10 rounded-full"
-						src="https://sun9-45.userapi.com/impg/3FbwaRJ40t7Pf98vyFKviZrHvNM_2gcu1Y8NVg/ZSXk-4Ihtcw.jpg?size=604x604&quality=96&sign=f829ec70056ddecda976ddb1d86433da&type=album"
-						alt="Icon"
-					/>
-					<img
-						className="w-10 h-10 rounded-full"
-						src="https://sun9-45.userapi.com/impg/3FbwaRJ40t7Pf98vyFKviZrHvNM_2gcu1Y8NVg/ZSXk-4Ihtcw.jpg?size=604x604&quality=96&sign=f829ec70056ddecda976ddb1d86433da&type=album"
-						alt="Icon"
-					/>
-				</div>
-				<p className="uppercase py-5 text-gray-300">
-					Started work... - Ended...
-				</p>
-				<ul className="list-disc space-y-4 ml-5 text-lg">
-					<li>Summary points Summary points Summary points</li>
-					<li>Summary points Summary points Summary points</li>
-					<li>Summary points Summary points Summary points</li>
-					<li>Summary points Summary points Summary points</li>
-					<li>Summary points Summary points Summary points</li>
-				</ul>
-			</div>
-		</article>
-	);
+      <article className="flex flex-col rounded-lg items-center space-y-7 flex-shrink-0 w-[500px] md:w-[600px] xl:w-[900px] snap-center bg-[#292929] p-10 opacity-40 hover:opacity-100 transition-opacity duration-200 overflow-hidden">
+        <motion.img
+          className="w-32 h-32 rounded-full xl:w-[200px] xl:h-[200px] object-cover object-center"
+          initial={{ y: -100, opacity: 0 }}
+          transition={{ duration: 1.2 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          src={urlFor(experience?.companyImage).url()}
+          alt="Image"
+        />
+        <div className="px-0 md:px-10">
+          <h4 className="text-4xl font-light">CEO of PAPAFAM</h4>
+          <p className="font-bold text-2xl mt-1">PAPAFAM</p>
+          <div className="flex space-x-2 my-2">
+            {/* {experience?.technologies.map((technology) => (
+              <Image
+                key={technology._id}
+                className="h-10 w-10 rounded-full"
+                src={urlFor(technology.image && technology.image )?.url()}
+                alt={""}
+              />
+            ))} */}
+            {
+              // pageInfo?.heroImage &&
+              // <Image
+              //   className="relative rounded-full w-32 h-32 mx-auto object-cover"
+              //   src={urlFor(pageInfo?.heroImage).url()}
+              //   width={128}
+              //   height={128}
+              //   alt="Avatar"
+              // />
+            }
+          </div>
+          <p className="uppercase py-5 text-gray-300">
+            {new Date(experience.dateStarted).toDateString()} -{" "}
+            {experience.isCurrentlyWorkingHere
+              ? "Present"
+              : new Date(experience.dateEnded).toDateString()}
+          </p>
+          <p className="uppercase py-5 text-gray-300">
+            Started work... - Ended...
+          </p>
+          <ul className="list-disc space-y-4 ml-5 text-lg h-96 max-w-40 overflow-y-scroll scrollbar-thin scrollbar-track-black scrollbar-thumb-[#F7AB0A]/80">
+            {experience.points.map((point,index) => (
+              <li key={index}>{point}</li>
+            ))}
+          </ul>
+        </div>
+      </article>
+    );
 }

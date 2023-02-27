@@ -18,7 +18,7 @@ export interface PageInfo extends SanityBody {
     addresses: string;
     backgroundInformation: string;
     email: string;
-    rules: string;
+    role: string;
     heroImage: Image;
     name: string;
     phoneNumber: string;
@@ -27,7 +27,7 @@ export interface PageInfo extends SanityBody {
 
 export interface Technology extends SanityBody {
     _type: "technology";
-    images: string
+    image: string
     progression: number;
     title: string;
 }

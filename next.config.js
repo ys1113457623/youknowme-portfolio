@@ -1,10 +1,12 @@
 /** @type {import('next').NextConfig} */
+const dns = require("dns");
+
+dns.setDefaultResultOrder("ipv4first")
 const nextConfig = {
-  experimental: {
-    appDir: true,
-  },
+  reactStrictMode: true,
+  swcMinify: true,
   images: {
-    domains: ['coolsen.ru'],
+    domains: ['coolsen.ru','cdn.sanity.io'],
   }
 }
 
