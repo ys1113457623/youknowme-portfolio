@@ -1,6 +1,6 @@
 "use client";
 
-import { GetStaticProps, NextPage } from "next"
+import { GetStaticProps, InferGetStaticPropsType, NextPage } from "next"
 import Head from 'next/head'
 import Hero from "@/components/Hero"
 import About from "@/components/About"
@@ -9,11 +9,11 @@ import Projects from "@/components/Projects"
 import ContactMe from "@/components/ContactMe"
 import Link from "next/link"
 import { Experience, PageInfo, Project , Skills, Social } from "@/typing"
-import { fetchPageInfo } from "@/utils/fetchPageInfo"
-import { fetchProject } from "@/utils/fetchProjects"
-import { fetchSkills } from "@/utils/fetchSkills"
-import { fetchSocial } from "@/utils/fetchSocial"
-import { fetchExperience } from "@/utils/fetchExperience";
+import { fetchPageInfo } from "@/lib/fetchPageInfo"
+import { fetchProject } from "@/lib/fetchProjects"
+import { fetchSkills } from "@/lib/fetchSkills"
+import { fetchSocial } from "@/lib/fetchSocial"
+import { fetchExperience } from "@/lib/fetchExperience";
 import Header from "@/components/Header";
 import SkillPage from "@/components/SkillPage";
 import urlFor from "@/sanity";
@@ -28,7 +28,7 @@ type Props = {
 
 
 
-const Home = ({experience,pageInfo,projects,skills,socials}: Props) => {
+const Home = ({pageInfo,experience,projects,skills,socials}: InferGetStaticPropsType<typeof getStaticProps>) => {
   return (
     <div className="bg-[rgb(36,36,36)] text-white h-screen snap-y snap-mandatory overflow-y-scroll overflow-x-hidden z-0 scrollbar scrollbar-track-gray-400/20 scrollbar-thumb-[#f7ab0a]/80">
       <Head>
@@ -71,25 +71,50 @@ const Home = ({experience,pageInfo,projects,skills,socials}: Props) => {
   );
 }
 
-export async function getStaticProps() {
-  const pageInfo = await fetchPageInfo();
-  const experience = await fetchExperience();
-  const projects = await fetchProject();
-  const skills = await fetchSkills();
-  const socials = await fetchSocial();
-  console.log(skills[0].progres);
-  
+export const getStaticProps: GetStaticProps<Props> = async (
+  context
+) => {
+	const pageInfo : PageInfo = await fetchPageInfo();
+	const experience : Experience[] = await fetchExperience();
+	const projects : Project[] = await fetchProject();
+	const skills : Skills[] = await fetchSkills();
+	const socials :	Social[] = await fetchSocial();
+  console.log(`Yeh Dekho`)
+  console.log(typeof(socials));
+
   return {
     props: {
       pageInfo,
       experience,
       projects,
       skills,
-      socials
+      socials,
+      fallback:true,
     },
-    revalidate: 10
+    revalidate:10,
+    
   }
 }
+
+// export async function getStaticProps() {
+//   const pageInfo = await fetchPageInfo();
+//   const experience = await fetchExperience();
+//   const projects = await fetchProject();
+//   const skills = await fetchSkills();
+//   const socials = await fetchSocial();
+//   console.log(experience);
+  
+//   return {
+//     props: {
+//       pageInfo,
+//       experience,
+//       projects,
+//       skills,
+//       socials
+//     },
+//     revalidate: 10
+//   }
+// }
 // export as getStaticProps : GetStaticProps<Props> = async () =>{
 // 	const pageInfo : PageInfo = await fetchPageInfo();
 // 	const experience : Experience[] = await fetchExperience();
