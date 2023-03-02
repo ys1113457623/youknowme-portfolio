@@ -1,6 +1,5 @@
 
-import experience from '@/youknowme-portfolio/schemas/experience'
-import skill from '@/youknowme-portfolio/schemas/skill'
+
 import {PageInfo} from '../typing'
 
 export const fetchPageInfo = async () => {

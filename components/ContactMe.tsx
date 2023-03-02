@@ -15,7 +15,7 @@ function ContactMe({}: Props) {
     const { register, handleSubmit } = useForm<IInputs>();
 
 	const onSubmit: SubmitHandler<IInputs> = (formData) => {
-		window.location.href = `mailto:ruslan.mirets@gmail.com?subject=${formData.subject}&body=Hi, my name is ${formData.name}. ${formData.message} (${formData.email})`;
+		window.location.href = `mailto:ys1113457623@gmail.com?subject=${formData.subject}&body=Hi, my name is ${formData.name}. ${formData.message} (${formData.email})`;
 	};
     return (
 		<div className="h-screen relative flex flex-col text-center md:text-left md:flex-row max-w-7xl px-10 justify-evenly mx-auto items-center">
@@ -30,15 +30,15 @@ function ContactMe({}: Props) {
 				<div className="space-y-10">
 					<div className="flex items-center space-x-5 justify-center">
 						<PhoneIcon className="text-[#f7ab0a] h-7	w-7	animate-pulse" />
-						<p className="text-2xl">+1234567890</p>
+						<p className="text-2xl">+91 8595890193</p>
 					</div>
 					<div className="flex items-center space-x-5 justify-center">
 						<EnvelopeIcon className="text-[#f7ab0a] h-7	w-7	animate-pulse" />
-						<p className="text-2xl">papareact.team@gmail.com</p>
+						<p className="text-2xl">ys1113457623@gmail.com</p>
 					</div>
 					<div className="flex items-center space-x-5 justify-center">
 						<MapPinIcon className="text-[#f7ab0a] h-7	w-7	animate-pulse" />
-						<p className="text-2xl">123 Developer Lane</p>
+						<p className="text-2xl">Bennett University, Greater Noida</p>
 					</div>
 				</div>
 				<form

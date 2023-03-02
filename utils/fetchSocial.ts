@@ -1,5 +1,3 @@
-
-import skill from '@/youknowme-portfolio/schemas/skill'
 import {Social} from '../typing'
 
 export const fetchSocial = async () => {

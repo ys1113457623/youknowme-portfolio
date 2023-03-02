@@ -13,7 +13,7 @@ type Props = {
 
 function Hero({ pageInfo }: Props) {
     const [text,count] = useTypewriter({
-        words: [`Hi My Name Is ${pageInfo?.name}`,"Designer","Creater"],
+        words: [`Hi I'm ${pageInfo?.name}`,"Flutter Developer","Web Developer","AI"],
         loop: true,
         delaySpeed: 2000,
     });

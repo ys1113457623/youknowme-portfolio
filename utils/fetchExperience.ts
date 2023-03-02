@@ -1,5 +1,5 @@
 
-import skill from '@/youknowme-portfolio/schemas/skill'
+
 import {Experience, Project} from '../typing'
 
 export const fetchExperience = async () => {

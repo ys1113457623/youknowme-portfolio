@@ -27,14 +27,14 @@ export default function Header({socials}: Props) {
         }}
         className="flex flex-row items-center"
       >
-        {/* {socials.map((social) => (
+        {socials.map((social) => (
           <SocialIcon
             key={social._id}
             url={social.url}
             fgColor="gray"
             bgColor="transparent"
           />
-        ))} */}
+        ))}
       </motion.div>
       <motion.div
         initial={{
@@ -53,7 +53,7 @@ export default function Header({socials}: Props) {
         className="flex flex-row items-center text-gray-300 cursor-pointer"
       >
         <SocialIcon
-          url="https://www.instagram.com/jaketrent"
+          url="https://www.linkedin.com/in/sahil-s-699392200/"
           fgColor="gray"
           bgColor="transparent"
         />
