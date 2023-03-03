@@ -29,6 +29,7 @@ function Projects({projects}: Props) {
               <motion.img
                 height={500}
                 width={500}
+                
                 initial={{ y: -300, opacity: 0 }}
                 transition={{ duration: 1.2 }}
                 whileInView={{ y: 0, opacity: 1 }}
@@ -36,14 +37,14 @@ function Projects({projects}: Props) {
                 src={urlFor(project?.image).url()}
                 alt="Image"
               />
-              <div className="space-y-10 px-0 md:px-10 max-w-6xl">
-                <h4 className="text-4xl font-semibold text-center">
+              <div className="space-y-4 px-0 md:px-10 max-w-6xl">
+                <h4 className="text-3xl font-semibold text-center">
                   <span className="underline decoration-[#f7ab0a]/50">
                     PROJECT {index + 1} of {projects.length}:
                   </span>{" "}
-                  {project.title}
+                  <a href={project.LinkToBuild}>{project.title}</a>
                 </h4>
-                <p className="text-lg text-center md:text-left">
+                <p className="text-justify xl:text-1xl text-sm md:text-left">
                   {project.summary}
                 </p>
               </div>
